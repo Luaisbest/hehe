@@ -1,0 +1,43 @@
+// ==UserScript==
+// @name         Bypass Yeumoney
+// @namespace    https://github.com/code4loves/bypass-yeumoney
+// @version      1.0
+// @description  Tự động bỏ qua trang rút gọn Yeumoney.com
+// @author       Anh Iu
+// @match        *://yeumoney.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    function autoClickButton() {
+        const button = document.querySelector('button#btn-main');
+        if (button) {
+            console.log("Found button, clicking...");
+            button.click();
+        }
+    }
+
+    function autoRedirect() {
+        const link = document.querySelector('a#next-link');
+        if (link) {
+            console.log("Found next link, redirecting...");
+            window.location.href = link.href;
+        }
+    }
+
+    function skipAds() {
+        const skipButton = document.querySelector('.skip-ad-button');
+        if (skipButton) {
+            console.log("Skipping ads...");
+            skipButton.click();
+        }
+    }
+
+    setTimeout(() => {
+        autoClickButton();
+        autoRedirect();
+        skipAds();
+    }, 2000);
+})();
